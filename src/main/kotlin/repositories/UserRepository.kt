@@ -13,6 +13,7 @@ class UserRepository : IUserRepository {
     override suspend fun createUser(user: User): User = suspendTransaction {
 
         val dao = UserDAO.new {
+            name = user.name
             username = user.username
             password = user.password
             bio = user.bio
