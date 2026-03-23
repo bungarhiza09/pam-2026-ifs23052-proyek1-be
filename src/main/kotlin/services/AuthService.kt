@@ -26,6 +26,7 @@ class AuthService(
         val request = call.receive<AuthRequest>()
 
         val validator = ValidatorHelper(request.toMap())
+        validator.required("name", "Nama tidak boleh kosong")
         validator.required("username", "Username tidak boleh kosong")
         validator.required("password", "Password tidak boleh kosong")
         validator.validate()

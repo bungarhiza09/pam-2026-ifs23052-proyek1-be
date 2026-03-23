@@ -1,28 +1,16 @@
 package org.delcom.data
 
-import org.delcom.entities.User
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class UserResponse(
-
-    val id: String,
-    val username: String,
-    val bio: String?,
-    val profileImage: String?
-
-){
-    companion object {
-
-        fun fromEntity(user: User): UserResponse {
-
-            return UserResponse(
-                id = user.id,
-                username = user.username,
-                bio = user.bio,
-                profileImage = user.photo
-            )
-        }
-
-    }
-}
+    var id: String = "",
+    var name: String = "",
+    var username: String = "",
+    var photo: String? = null,
+    var bio: String? = null,
+    var createdAt: Instant = Clock.System.now(),
+    var updatedAt: Instant = Clock.System.now(),
+)
