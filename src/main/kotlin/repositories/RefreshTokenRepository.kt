@@ -16,6 +16,7 @@ class RefreshTokenRepository : IRefreshTokenRepository {
             userId = UUID.fromString(token.userId)
             refreshToken = token.refreshToken
             authToken = token.authToken
+            createdAt = token.createdAt
         }
 
         refreshTokenDAOToModel(dao)
