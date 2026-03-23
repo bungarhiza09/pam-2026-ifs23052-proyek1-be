@@ -18,27 +18,43 @@ class CommentService(
     // ===== CREATE =====
     suspend fun post(call: ApplicationCall) {
 
+        // 🔐 Ambil user dari token
         val user = ServiceHelper.getAuthUser(call, userRepository)
 
+        // 📥 Ambil request body
         val request = call.receive<Map<String, String>>()
 
+        // ✅ Validasi
         val validator = ValidatorHelper(request)
         validator.required("postId", "Post ID tidak boleh kosong")
         validator.required("content", "Komentar tidak boleh kosong")
         validator.validate()
 
+        // 🧱 Buat entity
         val comment = Comment(
             userId = user.id,
             postId = request["postId"]!!,
             content = request["content"]!!
         )
 
+        // 💾 Simpan ke database
         val result = commentRepository.createComment(comment)
 
+        // 🎯 Mapping ke response (INI YANG PENTING)
+        val response = CommentResponse(
+            id = result.id,
+            postId = result.postId,
+            userId = result.userId,
+            author = user.username, // 🔥 nama user
+            content = result.content,
+            createdAt = result.createdAt.toString()
+        )
+
+        // 📤 Kirim ke frontend
         call.respond(
             DataResponse(
                 success = true,
-                data = mapOf("comment" to result)
+                data = mapOf("comment" to response)
             )
         )
     }
@@ -51,10 +67,24 @@ class CommentService(
 
         val comments = commentRepository.getCommentsByPost(postId)
 
+        val response = comments.map { comment ->
+
+            val user = userRepository.getUserById(comment.userId)
+
+            CommentResponse(
+                id = comment.id,
+                postId = comment.postId,
+                userId = comment.userId,
+                author = user?.username ?: "Unknown", // 🔥 penting
+                content = comment.content,
+                createdAt = comment.createdAt.toString()
+            )
+        }
+
         call.respond(
             DataResponse(
                 success = true,
-                data = mapOf("comments" to comments)
+                data = mapOf("comments" to response)
             )
         )
     }

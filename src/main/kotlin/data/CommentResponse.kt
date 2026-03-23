@@ -4,9 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CommentResponse(
-    val id: Int,
-    val postId: Int,
-    val username: String,
+    val id: String,
+    val postId: String,
+    val userId: String,
+    val author: String,
     val content: String,
     val createdAt: String
 )
