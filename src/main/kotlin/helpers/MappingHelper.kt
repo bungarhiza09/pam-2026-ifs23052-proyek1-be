@@ -22,34 +22,23 @@ import org.delcom.entities.Comment
 suspend fun <T> suspendTransaction(block: Transaction.() -> T): T =
     newSuspendedTransaction(Dispatchers.IO, statement = block)
 
-
-
 fun userDAOToModel(dao: UserDAO) = User(
-    id = dao.id.value.toString(),
-    name = dao.username, // atau dao.name kalau ada di DAO
-    username = dao.username,
-    password = dao.password,
-    photo = dao.photo,
-    bio = dao.bio,
-
-    createdAt = dao.createdAt
-        .toInstant(ZoneOffset.UTC)
-        .toKotlinInstant(),
-
-    updatedAt = dao.updatedAt
-        ?.toInstant(ZoneOffset.UTC)
-        ?.toKotlinInstant()
-        ?: Clock.System.now()
+    dao.id.value.toString(),
+    dao.name,
+    dao.username,
+    dao.password,
+    dao.photo,
+    dao.bio,
+    dao.createdAt,
+    dao.updatedAt
 )
 
-
-
 fun refreshTokenDAOToModel(dao: RefreshTokenDAO) = RefreshToken(
-    id = dao.id.value.toString(),
-    userId = dao.userId.value.toString(),
-    refreshToken = dao.refreshToken,
-    authToken = dao.authToken,
-    createdAt = dao.createdAt.toInstant(java.time.ZoneOffset.UTC).toKotlinInstant()
+    dao.id.value.toString(),
+    dao.userId.toString(),
+    dao.refreshToken,
+    dao.authToken,
+    dao.createdAt,
 )
 
 
