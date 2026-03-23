@@ -18,6 +18,8 @@ class UserRepository : IUserRepository {
             password = user.password
             bio = user.bio
             photo = user.photo
+            createdAt = user.createdAt
+            updatedAt = user.updatedAt
         }
 
         userDAOToModel(dao)
