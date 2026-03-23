@@ -31,7 +31,7 @@ fun appModule(jwtSecret: String) = module {
     }
 
     single {
-        PostService(get(), get())
+        PostService(get(), get(), get(), get())
     }
 
     single<ICommentRepository> {

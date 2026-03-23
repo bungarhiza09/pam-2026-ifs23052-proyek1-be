@@ -20,7 +20,7 @@ class LikeService(
         val postId = call.parameters["postId"]
             ?: throw AppException(400, "Post ID tidak valid")
 
-        val isLiked = likeRepository.toggleLike(
+        val isLiked = likeRepository.toggle(
             user.id,
             postId
         )
@@ -41,7 +41,7 @@ class LikeService(
         val postId = call.parameters["postId"]
             ?: throw AppException(400, "Post ID tidak valid")
 
-        val total = likeRepository.countLikes(postId)
+        val total = likeRepository.countByPost(postId)
 
         call.respond(
             DataResponse(
