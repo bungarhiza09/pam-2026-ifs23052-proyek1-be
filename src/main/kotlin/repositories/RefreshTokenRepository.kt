@@ -13,7 +13,7 @@ class RefreshTokenRepository : IRefreshTokenRepository {
     override suspend fun createToken(token: RefreshToken): RefreshToken = suspendTransaction {
 
         val dao = RefreshTokenDAO.new {
-            userId = EntityID(UUID.fromString(token.userId), UserTable)
+            userId = UUID.fromString(token.userId)
             refreshToken = token.refreshToken
             authToken = token.authToken
         }
