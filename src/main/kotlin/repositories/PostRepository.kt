@@ -20,6 +20,8 @@ class PostRepository : IPostRepository {
             title = post.title
             description = post.description
             image = post.imageUrl
+            createdAt = post.createdAt
+            updatedAt = post.updatedAt
 
         }
 
