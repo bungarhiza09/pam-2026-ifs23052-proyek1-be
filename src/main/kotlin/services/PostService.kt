@@ -95,11 +95,11 @@ class PostService(
             DataResponse(
                 status = "success",
                 message = "Berhasil mengambil data",
-                data = mapOf(
-                    "posts" to postsWithMeta,
-                    "limit" to limit,
-                    "offset" to offset,
-                    "hasMore" to hasMore
+                data = PostsResponse(
+                    posts = postsWithMeta,
+                    limit = limit,
+                    offset = offset,
+                    hasMore = hasMore
                 )
             )
         )

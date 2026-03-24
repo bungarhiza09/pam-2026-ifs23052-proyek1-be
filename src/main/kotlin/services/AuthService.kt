@@ -99,7 +99,10 @@ class AuthService(
         val response = DataResponse(
             "success",
             "Berhasil melakukan login",
-            null
+            mapOf(
+                Pair("authToken", authToken),
+                Pair("refreshToken", strRefreshToken)
+            )
         )
         call.respond(response)
     }
