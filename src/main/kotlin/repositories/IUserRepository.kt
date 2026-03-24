@@ -9,5 +9,4 @@ interface  IUserRepository {
     suspend fun create(user: User) : String
     suspend fun update(id: String, newUser: User): Boolean
     suspend fun delete(id: String): Boolean
-    suspend fun getPostsByUserId(userId: String): List<Post>
 }

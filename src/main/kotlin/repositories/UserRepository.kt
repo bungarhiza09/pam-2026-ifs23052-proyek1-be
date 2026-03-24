@@ -68,10 +68,4 @@ class UserRepository : IUserRepository {
         rowsDeleted >= 1
     }
 
-    override suspend fun getPostsByUserId(userId: String): List<Post> = suspendTransaction {
-        PostDAO
-            .find { PostTable.userId eq UUID.fromString(userId) }
-            .map(::postDAOToModel)
-    }
-
 }

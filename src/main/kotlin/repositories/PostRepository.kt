@@ -98,4 +98,10 @@ class PostRepository : IPostRepository {
             .map { postDAOToModel(it) }
     }
 
+    override suspend fun getPostsByUserId(userId: String): List<Post> = suspendTransaction {
+        PostDAO
+            .find { PostTable.userId eq UUID.fromString(userId) }
+            .map(::postDAOToModel)
+    }
+
 }

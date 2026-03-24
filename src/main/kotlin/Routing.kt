@@ -104,7 +104,7 @@ fun Application.configureRouting() {
                 }
 
                 get("/me/posts") {
-                    userService.getMyPosts(call)
+                    postService.getMyPosts(call)
                 }
             }
 

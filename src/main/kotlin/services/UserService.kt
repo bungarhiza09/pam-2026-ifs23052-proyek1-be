@@ -3,6 +3,10 @@ package org.delcom.services
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.*
 import io.ktor.server.application.*
+import io.ktor.server.auth.UnauthorizedResponse
+import io.ktor.server.auth.jwt.JWTPrincipal
+import io.ktor.server.auth.principal
+import io.ktor.server.plugins.NotFoundException
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.util.cio.*
@@ -217,12 +221,4 @@ class UserService(
         call.respondFile(file)
     }
 
-    suspend fun getMyPosts(call: ApplicationCall) {
-        val response = DataResponse(
-            "success",
-            "Berhasil mengubah photo profile",
-            null
-        )
-        call.respond(response)
-    }
 }

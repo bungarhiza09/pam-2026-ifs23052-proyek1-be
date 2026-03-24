@@ -264,4 +264,41 @@ class PostService(
     suspend fun getImage(call: ApplicationCall) {
         call.respond("image not implemented")
     }
+
+    suspend fun getMyPosts(call: ApplicationCall) {
+
+        val user = ServiceHelper.getAuthUser(call, userRepository)
+
+        val posts = postRepository.getPostsByUserId(user.id)
+
+        val responseList = posts.map { post ->
+
+            val totalLikes = likeRepository.countByPost(post.id)
+            val totalComments = commentRepository.countByPost(post.id)
+            val isLiked = likeRepository.exists(post.id, user.id)
+
+            val author = userRepository.getById(post.userId)?.username ?: "Unknown"
+
+            PostResponse(
+                id = post.id,
+                userId = post.userId,
+                title = post.title,
+                description = post.description,
+                imageUrl = post.imageUrl,
+                author = author,
+                totalLikes = totalLikes,
+                totalComments = totalComments,
+                isLiked = isLiked,
+                createdAt = post.createdAt.toString()
+            )
+        }
+
+        call.respond(
+            DataResponse(
+                status = "success",
+                message = "Berhasil mengambil my posts",
+                data = mapOf("posts" to responseList)
+            )
+        )
+    }
 }

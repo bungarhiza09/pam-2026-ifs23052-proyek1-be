@@ -26,4 +26,5 @@ interface IPostRepository {
         offset: Long
     ): List<Post>
 
+    suspend fun getPostsByUserId(userId: String): List<Post>
 }
