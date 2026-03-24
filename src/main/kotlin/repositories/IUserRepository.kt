@@ -1,6 +1,7 @@
 package org.delcom.repositories
 
 import org.delcom.entities.User
+import org.delcom.entities.Post
 
 interface  IUserRepository {
     suspend fun getById(userId: String): User?
@@ -8,4 +9,5 @@ interface  IUserRepository {
     suspend fun create(user: User) : String
     suspend fun update(id: String, newUser: User): Boolean
     suspend fun delete(id: String): Boolean
+    suspend fun getPostsByUserId(userId: String): List<Post>
 }
