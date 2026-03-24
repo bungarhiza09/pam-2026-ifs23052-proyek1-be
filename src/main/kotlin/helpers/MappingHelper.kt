@@ -48,16 +48,9 @@ fun postDAOToModel(dao: PostDAO) = Post(
     description = dao.description,
     imageUrl = dao.image,
 
-    createdAt = dao.createdAt
-        .toInstant(ZoneOffset.UTC)
-        .toKotlinInstant(),
+    createdAt = dao.createdAt,
 
-    updatedAt = dao.updatedAt
-        ?.toInstant(ZoneOffset.UTC)
-        ?.toKotlinInstant()
-        ?: dao.createdAt
-            .toInstant(ZoneOffset.UTC)
-            .toKotlinInstant()
+    updatedAt = dao.updatedAt ?: dao.createdAt
 )
 
 
@@ -73,5 +66,5 @@ fun commentDAOToModel(dao: CommentDAO) = Comment(
     postId = dao.postId.value.toString(),
     userId = dao.userId.value.toString(),
     content = dao.content,
-    createdAt = dao.createdAt.toInstant(java.time.ZoneOffset.UTC).toKotlinInstant()
+    createdAt = dao.createdAt
 )
