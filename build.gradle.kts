@@ -46,5 +46,5 @@ dependencies {
     implementation("io.ktor:ktor-server-auth:${ktor_version}")
     implementation("io.ktor:ktor-server-auth-jwt:${ktor_version}")
     implementation("org.mindrot:jbcrypt:0.4")
-    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:0.49.0")
+    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:0.61.0")
 }
