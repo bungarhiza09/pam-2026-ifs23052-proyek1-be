@@ -2,7 +2,7 @@ package org.delcom.tables
 
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
-import org.jetbrains.exposed.sql.javatime.datetime
+import org.jetbrains.exposed.sql.kotlin.datetime.timestamp
 
 object CommentTable : UUIDTable("comments") {
 
@@ -20,5 +20,5 @@ object CommentTable : UUIDTable("comments") {
 
     val content = text("content")
 
-    val createdAt = datetime("created_at")
+    val createdAt = timestamp("created_at")
 }

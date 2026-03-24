@@ -13,6 +13,10 @@ data class Post(
     var title: String,
     var description: String,
     var imageUrl: String? = null,
-    var createdAt: String = Clock.System.now().toString(),
-    var updatedAt: String = Clock.System.now().toString()
+
+    @Contextual
+    val createdAt: Instant = Clock.System.now(),
+
+    @Contextual
+    var updatedAt: Instant = Clock.System.now()
 )

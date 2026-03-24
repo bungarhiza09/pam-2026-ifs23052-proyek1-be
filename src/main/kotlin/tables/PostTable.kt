@@ -2,7 +2,7 @@ package org.delcom.tables
 
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
-import org.jetbrains.exposed.sql.javatime.datetime
+import org.jetbrains.exposed.sql.kotlin.datetime.timestamp
 
 object PostTable : UUIDTable("posts") {
 
@@ -18,7 +18,7 @@ object PostTable : UUIDTable("posts") {
 
     val image = text("image").nullable()
 
-    val createdAt = datetime("created_at")
+    val createdAt = timestamp("created_at")
 
-    val updatedAt = datetime("updated_at").nullable()
+    val updatedAt = timestamp("updated_at").nullable()
 }
