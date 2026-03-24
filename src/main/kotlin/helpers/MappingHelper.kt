@@ -47,6 +47,7 @@ fun postDAOToModel(dao: PostDAO) = Post(
     title = dao.title,
     description = dao.description,
     imageUrl = dao.image,
+    kategori = dao.kategori,
 
     createdAt = dao.createdAt,
 

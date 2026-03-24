@@ -14,6 +14,7 @@ interface IPostRepository {
         id: String,
         title: String,
         description: String,
+        kategori: String,
         image: String?
     ): Boolean
 

@@ -8,6 +8,7 @@ data class PostResponse(
     val userId: String,
     val title: String,
     val description: String,
+    val kategori: String,
     val imageUrl: String?,
 
     val author: String,

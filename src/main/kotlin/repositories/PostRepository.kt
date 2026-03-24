@@ -19,6 +19,7 @@ class PostRepository : IPostRepository {
             userId = EntityID(UUID.fromString(post.userId), UserTable)
             title = post.title
             description = post.description
+            kategori = post.kategori
             image = post.imageUrl
             createdAt = post.createdAt
             updatedAt = post.updatedAt
@@ -48,6 +49,7 @@ class PostRepository : IPostRepository {
         id: String,
         title: String,
         description: String,
+        kategori: String,
         image: String?
     ): Boolean = suspendTransaction {
 
@@ -56,6 +58,7 @@ class PostRepository : IPostRepository {
 
         post.title = title
         post.description = description
+        post.kategori = kategori
         post.image = image
 
         true

@@ -17,6 +17,8 @@ class PostDAO(id: EntityID<UUID>) : Entity<UUID>(id) {
 
     var image by PostTable.image
 
+    var kategori by PostTable.kategori
+
     var createdAt by PostTable.createdAt
 
     var updatedAt by PostTable.updatedAt

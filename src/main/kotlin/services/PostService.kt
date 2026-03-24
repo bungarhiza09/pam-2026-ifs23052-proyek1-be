@@ -24,12 +24,14 @@ class PostService(
         userId: String,
         title: String,
         description: String,
+        kategori: String,
         image: String?
     ): Post {
         val post = Post(
             userId = userId,
             title = title,
             description = description,
+            kategori = kategori,
             imageUrl = image
         )
         return postRepository.createPost(post)
@@ -47,9 +49,10 @@ class PostService(
         id: String,
         title: String,
         description: String,
+        kategori: String,
         image: String?
     ): Boolean {
-        return postRepository.updatePost(id, title, description, image)
+        return postRepository.updatePost(id, title, description, kategori, image)
     }
 
     suspend fun deletePost(id: String): Boolean {
@@ -80,6 +83,7 @@ class PostService(
                 userId = post.userId,
                 title = post.title,
                 description = post.description,
+                kategori = post.kategori,
                 imageUrl = post.imageUrl,
                 author = author,
                 totalLikes = totalLikes,
@@ -126,6 +130,7 @@ class PostService(
             userId = post.userId,
             title = post.title,
             description = post.description,
+            kategori = post.kategori,
             imageUrl = post.imageUrl,
             author = author,
             totalLikes = totalLikes,
@@ -157,6 +162,7 @@ class PostService(
             user.id,
             request.title,
             request.description,
+            request.kategori,
             request.imageUrl
         )
 
@@ -179,6 +185,7 @@ class PostService(
             id,
             request.title,
             request.description,
+            request.kategori,
             request.imageUrl
         )
 
@@ -243,6 +250,7 @@ class PostService(
                 userId = post.userId,
                 title = post.title,
                 description = post.description,
+                kategori = post.kategori,
                 imageUrl = post.imageUrl,
                 author = author,
                 totalLikes = totalLikes,
@@ -284,6 +292,7 @@ class PostService(
                 userId = post.userId,
                 title = post.title,
                 description = post.description,
+                kategori = post.kategori,
                 imageUrl = post.imageUrl,
                 author = author,
                 totalLikes = totalLikes,

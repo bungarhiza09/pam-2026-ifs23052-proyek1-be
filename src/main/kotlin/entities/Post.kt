@@ -13,6 +13,7 @@ data class Post(
     var title: String,
     var description: String,
     var imageUrl: String? = null,
+    var kategori: String,
 
     @Contextual
     val createdAt: Instant = Clock.System.now(),
