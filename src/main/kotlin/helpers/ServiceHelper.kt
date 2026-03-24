@@ -18,7 +18,7 @@ object ServiceHelper {
             .asString()
             ?: throw AppException(401, "Token tidak valid")
 
-        val user = userRepository.getUserById(userId)
+        val user = userRepository.getById(userId)
             ?: throw AppException(401, "User tidak valid")
 
         return user

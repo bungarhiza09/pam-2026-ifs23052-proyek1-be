@@ -27,7 +27,8 @@ class LikeService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil",
                 data = mapOf(
                     "liked" to isLiked
                 )
@@ -45,7 +46,8 @@ class LikeService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil mengambil data",
                 data = mapOf(
                     "totalLikes" to total
                 )

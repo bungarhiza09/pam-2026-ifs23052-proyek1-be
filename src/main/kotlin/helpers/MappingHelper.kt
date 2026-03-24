@@ -41,8 +41,6 @@ fun refreshTokenDAOToModel(dao: RefreshTokenDAO) = RefreshToken(
     dao.createdAt,
 )
 
-
-
 fun postDAOToModel(dao: PostDAO) = Post(
     id = dao.id.value.toString(),
     userId = dao.userId.value.toString(),

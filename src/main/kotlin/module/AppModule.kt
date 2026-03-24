@@ -15,7 +15,7 @@ fun appModule(jwtSecret: String) = module {
     }
 
     single {
-        UserService(get())
+        UserService(get(),get())
     }
 
     single<IRefreshTokenRepository> {

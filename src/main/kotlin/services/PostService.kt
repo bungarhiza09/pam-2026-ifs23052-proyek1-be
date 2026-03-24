@@ -73,7 +73,7 @@ class PostService(
             val totalComments = commentRepository.countByPost(post.id)
             val isLiked = likeRepository.exists(post.id, user.id)
 
-            val author = userRepository.getUserById(post.userId)?.username ?: "Unknown"
+            val author = userRepository.getById(post.userId)?.username ?: "Unknown"
 
             PostResponse(
                 id = post.id,
@@ -93,7 +93,8 @@ class PostService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil mengambil data",
                 data = mapOf(
                     "posts" to postsWithMeta,
                     "limit" to limit,
@@ -118,7 +119,7 @@ class PostService(
         val totalComments = commentRepository.countByPost(post.id)
         val isLiked = likeRepository.exists(post.id, user.id)
 
-        val author = userRepository.getUserById(post.userId)?.username ?: "Unknown"
+        val author = userRepository.getById(post.userId)?.username ?: "Unknown"
 
         val response = PostResponse(
             id = post.id,
@@ -135,7 +136,8 @@ class PostService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil mengambil data",
                 data = mapOf("post" to response)
             )
         )
@@ -160,7 +162,8 @@ class PostService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil menambah data",
                 data = mapOf("post" to post)
             )
         )
@@ -185,7 +188,8 @@ class PostService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil mengubah data",
                 data = mapOf("message" to "Post berhasil diupdate")
             )
         )
@@ -203,7 +207,8 @@ class PostService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil menghapus data",
                 data = mapOf("message" to "Post berhasil dihapus")
             )
         )
@@ -231,7 +236,7 @@ class PostService(
             val totalComments = commentRepository.countByPost(post.id)
             val isLiked = likeRepository.exists(post.id, user.id)
 
-            val author = userRepository.getUserById(post.userId)?.username ?: "Unknown"
+            val author = userRepository.getById(post.userId)?.username ?: "Unknown"
 
             PostResponse(
                 id = post.id,
@@ -249,7 +254,8 @@ class PostService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil mencari data",
                 data = mapOf("posts" to postsWithMeta)
             )
         )

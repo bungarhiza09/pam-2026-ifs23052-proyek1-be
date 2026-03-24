@@ -53,7 +53,8 @@ class CommentService(
         // 📤 Kirim ke frontend
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil menambah data",
                 data = mapOf("comment" to response)
             )
         )
@@ -69,7 +70,7 @@ class CommentService(
 
         val response = comments.map { comment ->
 
-            val user = userRepository.getUserById(comment.userId)
+            val user = userRepository.getById(comment.userId)
 
             CommentResponse(
                 id = comment.id,
@@ -83,7 +84,8 @@ class CommentService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil mengambil data",
                 data = mapOf("comments" to response)
             )
         )
@@ -115,7 +117,8 @@ class CommentService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil mengubah data",
                 data = mapOf("message" to "Komentar berhasil diupdate")
             )
         )
@@ -135,7 +138,8 @@ class CommentService(
 
         call.respond(
             DataResponse(
-                success = true,
+                status = "success",
+                message = "Berhasil menghapus data",
                 data = mapOf("message" to "Komentar berhasil dihapus")
             )
         )
